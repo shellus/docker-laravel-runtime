@@ -17,9 +17,8 @@ ENV HOME /root
 ENV DEBIAN_FRONTEND noninteractive
 
 # Use Supervisor to run and manage all other services
-ADD run.sh /run.sh
-RUN chmod 775 /*.sh
-CMD ["/run.sh"]
+
+
 
 # ------------------------------------------------------------------------------
 # Provision the server
@@ -27,6 +26,10 @@ CMD ["/run.sh"]
 
 RUN mkdir /provision
 ADD provision /provision
+
+ADD run.sh /run.sh
+RUN chmod 775 /*.sh
+
 RUN /provision/provision.sh
 
 
@@ -39,6 +42,8 @@ VOLUME  ["/var/lib/mysql"]
 # Expose ports
 EXPOSE 80
 EXPOSE 22
+
+CMD ["/run.sh"]
 # ------------------------------------------------------------------------------
 # Set locale (support UTF-8 in the container terminal)
 # ------------------------------------------------------------------------------
