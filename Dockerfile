@@ -27,9 +27,7 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN mkdir /provision
 ADD provision /provision
 
-ADD run.sh /run.sh
-RUN chmod 775 /*.sh
-
+RUN chmod +x /provision/provision.sh
 RUN /provision/provision.sh
 
 
@@ -42,6 +40,9 @@ VOLUME  ["/var/lib/mysql"]
 # Expose ports
 EXPOSE 80
 EXPOSE 22
+
+ADD run.sh /run.sh
+RUN chmod +x /run.sh
 
 CMD ["/run.sh"]
 # ------------------------------------------------------------------------------
