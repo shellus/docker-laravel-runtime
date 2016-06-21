@@ -18,7 +18,7 @@ ENV DEBIAN_FRONTEND noninteractive
 
 # Use Supervisor to run and manage all other services
 ADD run.sh /run.sh
-RUN chmod 775 /run.sh
+RUN chmod 775 /*.sh
 CMD ["/run.sh"]
 
 # ------------------------------------------------------------------------------
